@@ -1,0 +1,17 @@
+public class Main {
+    public static void main(String[] args) {
+        int populacaoA = 80000;
+        double crescimentoA = 0.03;
+        int populacaoB = 200000;
+        double crescimentoB = 0.015;
+        int anos = 0;
+
+        while (populacaoA < populacaoB) {
+            populacaoA += (int) (populacaoA * crescimentoA);
+            populacaoB += (int) (populacaoB * crescimentoB);
+            anos++;
+        }
+
+        System.out.println("Após " + anos + " anos, a população de A ultrapassará ou igualará a população de B.");
+    }
+}
