@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o primeiro número inteiro: ");
+        int numero1 = scanner.nextInt();
+
+        System.out.print("Digite o segundo número inteiro: ");
+        int numero2 = scanner.nextInt();
+
+        int inicio = Math.min(numero1, numero2); // Determina o menor número como início do intervalo
+        int fim = Math.max(numero1, numero2); // Determina o maior número como fim do intervalo
+
+        System.out.println("Números no intervalo [" + inicio + ", " + fim + "]:");
+        for (int i = inicio; i <= fim; i++) {
+            System.out.println(i);
+        }
+
+        scanner.close();
+    }
+}
