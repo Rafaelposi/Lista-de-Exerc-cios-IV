@@ -15,3 +15,67 @@ public class Main {
         System.out.println("Após " + anos + " anos, a população de A ultrapassará ou igualará a população de B.");
     }
 }
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int populacaoA, populacaoB;
+        double crescimentoA, crescimentoB;
+
+        do {
+            System.out.println("Informe a população do país A:");
+            populacaoA = validarPopulacao(scanner);
+
+            System.out.println("Informe a taxa de crescimento do país A (em decimal):");
+            crescimentoA = validarTaxa(scanner);
+
+            System.out.println("Informe a população do país B:");
+            populacaoB = validarPopulacao(scanner);
+
+            System.out.println("Informe a taxa de crescimento do país B (em decimal):");
+            crescimentoB = validarTaxa(scanner);
+
+            if (populacaoA >= populacaoB || crescimentoA <= 0 || crescimentoB <= 0) {
+                System.out.println("Dados inválidos. Certifique-se de que a população A seja menor que a população B e que as taxas de crescimento sejam positivas.");
+            }
+        } while (populacaoA >= populacaoB || crescimentoA <= 0 || crescimentoB <= 0);
+
+        int anos = 0;
+        while (populacaoA < populacaoB) {
+            populacaoA += (int) (populacaoA * crescimentoA);
+            populacaoB += (int) (populacaoB * crescimentoB);
+            anos++;
+        }
+
+        System.out.println("Após " + anos + " anos, a população de A ultrapassará ou igualará a população de B.");
+
+        scanner.close();
+    }
+
+    public static int validarPopulacao(Scanner scanner) {
+        int populacao = -1;
+        while (populacao < 0) {
+            System.out.print("População: ");
+            populacao = scanner.nextInt();
+            if (populacao < 0) {
+                System.out.println("População inválida. Informe um valor positivo.");
+            }
+        }
+        return populacao;
+    }
+
+    public static double validarTaxa(Scanner scanner) {
+        double taxa = -1;
+        while (taxa < 0) {
+            System.out.print("Taxa de crescimento: ");
+            taxa = scanner.nextDouble();
+            if (taxa < 0) {
+                System.out.println("Taxa de crescimento inválida. Informe um valor positivo.");
+            }
+        }
+        return taxa;
+    }
+}
